@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>AventStack.ExtentReports</RootNamespace>
     <AssemblyName>ExtentReports</AssemblyName>
-    <Version>4.1.0</Version>
+    <Version>4.1.0-net6</Version>
     <Company>AventStack</Company>
-    <Authors>anshooarora</Authors>
+    <Authors>TeamExtentReport</Authors>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
-    <StartupObject></StartupObject>
+    <StartupObject>
+    </StartupObject>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl>https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png</PackageIconUrl>
-    <Description>Extent Reporting Framework (.Net Standard), Community Edition</Description>
+    <Description>Extent Reporting Framework (.Net Standard), Community Edition - Special built Shell-CGI</Description>
     <Copyright>AventStack</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/extent-framework/extentreports-csharp/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>http://extentreports.com</PackageProjectUrl>
@@ -20,13 +20,19 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>extentreports extent reporting</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Update NewtonSoft.Json from 9.0.1 to 12.0.3</PackageReleaseNotes>
+    <PackageReleaseNotes>Update NewtonSoft.Json from 9.0.1 to 13.0.3</PackageReleaseNotes>
+    <AssemblyVersion>4.1.0.1</AssemblyVersion>
+    <FileVersion>4.1.0.1</FileVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>NU1603</NoWarn>
+    <FileAlignment>8192</FileAlignment>
   </PropertyGroup>
-
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <FileAlignment>8192</FileAlignment>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Views\Commons\CommonsAttributes.cshtml" />
     <None Remove="Views\Commons\CommonsDashboard.cshtml" />
@@ -72,7 +78,6 @@
     <None Remove="Views\V3Html\V3Index.cshtml" />
     <None Remove="Views\V3Html\V3Nav.cshtml" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Views\Commons\CommonsAttributes.cshtml" />
     <EmbeddedResource Include="Views\Commons\CommonsDashboard.cshtml" />
@@ -118,18 +123,19 @@
     <EmbeddedResource Include="Views\V3Html\V3Index.cshtml" />
     <EmbeddedResource Include="Views\V3Html\V3Nav.cshtml" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-    <PackageReference Include="MongoDB.Bson" Version="2.10.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.10.0" />
-    <PackageReference Include="RazorEngine.NetCore" Version="2.2.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3">
-      <NoWarn>NU1605</NoWarn>
-    </PackageReference>
+    <None Include="..\Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.20.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.20.0" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.20.0" />
+    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\GherkinLangs.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -137,12 +143,10 @@
       <DependentUpon>GherkinLangs.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Resources\GherkinLangs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GherkinLangs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
 </Project>
